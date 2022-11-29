@@ -11,6 +11,10 @@ function Clock() {
 
   useEffect(() =>{
     if(flag && type === 'work'){
+      if(worksecond > 0) {
+        const timer = setTimeout(() => setWorkSecond(worksecond - 1), 1000);
+        return () => clearTimeout(timer);
+      }
       if(worksecond === 0) {
         alert('work duration is over')
         setType('break');
